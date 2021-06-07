@@ -72,3 +72,16 @@ datatable(lakeChar, caption="Lake Characteristics")
 datatable(lakeChar, caption="Lake Ice Phenology")
 ```
 
+
+### Data
+
+The data within this database are separated into three main files and one ancillary file. 
+- *MainDataset.csv*: has the lake ice phenology for all 69 lakes.
+- *LakeCharacteristics.csv*: has the physical characteristics and coordinates of the lakes in the database.
+- *AllLakeNames.csv*: has all alternate names of lakes used in the database.
+- *69_lakes_ts_minimal.csv*: has all the lake ice phenology but in wide format where each column corresponds to a freeze date for years where the lake was intermittent. 
+
+### Scripts
+
+The *qaqc.r* and *separateMain.r* files are used for converted to *69_lakes_ts_minimal.csv* into "long" format where only one each column represents ice on and ice off dates. The *qaqc.r* file also performs some basic quality control and assurance of the dataset. There are two files, *create_lake_ice_time_series.py* and *additional_functions.py* that consolated lake names, conduct some quality control, and were responsible for the original data aggregation across multiple files. 
+
