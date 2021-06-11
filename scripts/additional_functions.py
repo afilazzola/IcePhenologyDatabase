@@ -1,10 +1,7 @@
 import pandas as pd
 import numpy as np
-from matplotlib import pyplot as plt
 import os
 from datetime import datetime
-
-from matplotlib import image as mpimg
 
 from IPython.display import IFrame,clear_output
 
