@@ -3,7 +3,7 @@ library(tidyverse)
 library(broom)
 
 ## Data
-data <- read.csv("data//79_lakes_ts_minimal.csv", stringsAsFactors = F)
+data <- read.csv("data//78_lakes_ts_minimal.csv", stringsAsFactors = F)
 
 
 ### Check dates
@@ -85,7 +85,7 @@ longData$froze <- ifelse(longData$froze == "", NA,longData$froze )
 
 simplified <- longData[!apply(longData[,c("froze","iceOn","iceOff")], 1 ,FUN= function(x) sum(is.na(x)))==3,]
 
-write.csv(simplified[,-1], "longTimeseries.csv", row.names=FALSE)
+write.csv(simplified[,-1], "data/PhenologyData.csv", row.names=FALSE)
 
 
 ### Extract the number of observations for the tables in manuscript
