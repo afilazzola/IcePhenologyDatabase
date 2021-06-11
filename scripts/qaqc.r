@@ -3,7 +3,7 @@ library(tidyverse)
 library(broom)
 
 ## Data
-data <- read.csv("data//69_lakes_ts_minimal.csv", stringsAsFactors = F)
+data <- read.csv("data//78_lakes_ts_minimal.csv", stringsAsFactors = F)
 
 
 ### Check dates
@@ -19,20 +19,23 @@ for(i in dateCol){
 }
 
 ## Compare ice on to ice off dates
-ggplot(data %>% filter(lakecode == "ARAI1") %>% filter(!is.na(ice_off_1)), aes(x=ice_on_1, y=ice_off_1))  + geom_point()
+ggplot(data %>% filter(lake == "suwa") %>% filter(!is.na(ice_off_1)), aes(x=ice_on_1, y=ice_off_1))  + geom_point()
 
-m1 <- lm(as.numeric(ice_off_1) ~ as.numeric(ice_on_1), data= data %>% filter(lakecode == "ARAI1") %>% filter(!is.na(ice_off_1)))
+m1 <- lm(as.numeric(ice_off_1) ~ as.numeric(ice_on_1), data= data %>% filter(lake == "suwa") %>% filter(!is.na(ice_off_1)))
 summary(m1)
+
+
+test <- data %>% filter(lake=="moosehead")
 
 ## calculate regressions for each lake
 fits <- data %>% filter(!is.na(ice_off_1))%>% filter(!is.na(ice_on_1)) %>%   ## Drop NAs
-  group_by(lakecode) %>%  ## group byh each lake
+  group_by(lake) %>%  ## group by each lake
   do(glance(lm(as.numeric(ice_off_1) ~ as.numeric(ice_on_1), data=.))) ## run linear models on each
 sort(fits$adj.r.squared)
 
 ## Repeat for second ice off
 fits <- data %>% filter(!is.na(ice_off_2))%>% filter(!is.na(ice_on_2)) %>%   ## Drop NAs
-  group_by(lakecode) %>%  ## group byh each lake
+  group_by(lake) %>%  ## group byh each lake
   do(glance(lm(as.numeric(ice_off_1) ~ as.numeric(ice_on_1), data=.))) ## run linear models on each
 sort(fits$adj.r.squared)
 
@@ -89,3 +92,9 @@ simplified <- longData[!apply(longData[,c("froze","iceOn","iceOff")], 1 ,FUN= fu
 
 write.csv(simplified[,-1], "longTimeseries.csv", row.names=FALSE)
 
+
+### Extract the number of observations for the tables in manuscript
+lengthNA <- function(x) { length(x[!is.na(x)])}
+summaryOut <- simplified %>% summarize_all(lengthNA)/nrow(simplified)*100 %>% round(., 2)
+
+# write.csv(summaryOut, "Table2.csv", row.names=F)
