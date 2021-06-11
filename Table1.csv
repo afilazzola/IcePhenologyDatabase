@@ -1,0 +1,12 @@
+Data Label,Description,Representation in the dataset (%)
+lakecode,A unique lake identifier that describes distinct lakes,100
+lake,A common name used for the lake,100
+start_year,"The year that winter begun that typically corresponded with the first freeze date (i.e., October to December).",100
+orig_duration,The number of days of ice cover reported by the contributor.,33.4
+latitude,The latitude coordinates in decimal degrees for the sampling location.,100
+longitude,The longitude coordinates in decimal degrees for the sampling location.,100
+other_lakenames,"Alternate common names used to describe the target lake, with multiple names separated by a semi-colon.",100
+freezeEvent,"The freeze instance during the winter for that records. Most records are froze-1 implying that the lake only froze and thawed once that season. In instances where multiple freezing occurred and were reported, each would be reported as froze-n where n represents the sequential freeze instance. ",100
+froze,"A binary response as to whether the lake froze that season (Y = yes it froze, N = ice free all season)",100
+iceOn,The date that the ice was described as covering the lake in the format of YYYY-MM-DD,55.4
+iceOff,"The date that the ice was described as no longer covering the lake (i.e., ice free) in the format of YYYY-MM-DD",82.9

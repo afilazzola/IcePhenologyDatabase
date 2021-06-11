@@ -1,12 +1,20 @@
 Data Label,Description,Representation in the dataset (%)
-lakecode,A unique lake identifier that describes distinct lakes,100
-lake,A common name used for the lake,100
-start_year,"The year that winter begun that typically corresponded with the first freeze date (i.e., October to December).",100
-orig_duration,The number of days of ice cover reported by the contributor.,34.1
+lakecode,A unique lake identifier that describes distinct lakes.,100
+ManuscriptName,The name of the lake as represented in italics within the data descriptor manuscript,100
+lakename,A common name used for the lake.,100
 latitude,The latitude coordinates in decimal degrees for the sampling location.,100
 longitude,The longitude coordinates in decimal degrees for the sampling location.,100
-other_lakenames,"Alternate common names used to describe the target lake, with multiple names separated by a semi-colon.",100
-freezeEvent,"The freeze instance during the winter for that records. Most records are froze-1 implying that the lake only froze and thawed once that season. In instances where multiple freezing occurred and were reported, each would be reported as froze-n where n represents the sequential freeze instance. ",100
-froze,"A binary response as to whether the lake froze that season (Y = yes it froze, N = ice free all season)",100
-iceOn,The date that the ice was described as covering the lake in the format of YYYY-MM-DD,53.9
-iceOff,"The date that the ice was described as no longer covering the lake (i.e., ice free) in the format of YYYY-MM-DD",83.2
+continent,The continent where the survey location of the target lake occurs.,100
+country,The country where the survey location of the target lake occurs.,100
+elevation,,52.6
+surface_area,The surface area of the lake in km2.,71.8
+mean_depth,The average depth of the lake in metres.,55.1
+max_depth,The maximum depth of the lake in metres.,71.8
+shoreline,The length of the entire shoreline in kilometers.,21.8
+contributor,The names of the contributors of the dataset.,100
+alternate_lakenames,"Alternate common names used to describe the target lake, with multiple names separated by a semi-colon.",100
+surface_area_source,The resource or dataset where the surface area of the lake was acquired.,100
+mean_depth_source,The resource or dataset where the mean depth of the lake was acquired.,100
+max_depth_source,The resource or dataset where the maximum depth of the lake was acquired.,100
+shoreline_source,The resource or dataset where the shoreline of the lake was acquired.,100
+elevation_google,The elevation of the lake based on the location coordinates from Google Maps in meters.,100
