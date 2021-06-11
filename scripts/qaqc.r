@@ -3,7 +3,7 @@ library(tidyverse)
 library(broom)
 
 ## Data
-data <- read.csv("data//78_lakes_ts_minimal.csv", stringsAsFactors = F)
+data <- read.csv("data//79_lakes_ts_minimal.csv", stringsAsFactors = F)
 
 
 ### Check dates
@@ -24,8 +24,6 @@ ggplot(data %>% filter(lake == "suwa") %>% filter(!is.na(ice_off_1)), aes(x=ice_
 m1 <- lm(as.numeric(ice_off_1) ~ as.numeric(ice_on_1), data= data %>% filter(lake == "suwa") %>% filter(!is.na(ice_off_1)))
 summary(m1)
 
-
-test <- data %>% filter(lake=="moosehead")
 
 ## calculate regressions for each lake
 fits <- data %>% filter(!is.na(ice_off_1))%>% filter(!is.na(ice_on_1)) %>%   ## Drop NAs
@@ -65,14 +63,11 @@ data %>% group_by(lakecode) %>% summarize(min2iceOn = nextMin(ice_on_1), max2ice
                                           min2iceOff = nextMin(ice_off_1), max2iceOff = nextMax(ice_off_1)) %>%   data.frame()
 
 ### Check the characters associated with each lake
-Factordata <- read.csv("69_lakes_ts_minimal.csv", stringsAsFactors = T)
-str(Factordata)
-
 
 ## Convert multiple freeze dates to long format
 data["ID"] <- row.names(data)
 
-### convert each metricc into long format
+### convert each metric into long format
 freezeYN <- data %>% select(ID, lakecode:froze_6, orig_duration:other_lakenames) %>%  ## select columns to gather
             gather(freezeEvent, froze, froze_1:froze_6)
 iceOnwide <- data %>% select(ID, froze_1 = ice_on_1, froze_2 = ice_on_2,froze_3 = ice_on_3,froze_4 = ice_on_4,froze_5 = ice_on_5,froze_6 = ice_on_6 ) %>%  ## select columns to gather
